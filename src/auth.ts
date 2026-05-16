@@ -17,7 +17,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID!,
       clientSecret: process.env.AUTH_GOOGLE_SECRET!,
-      allowDangerousEmailAccountLinking: true,
     }),
     CredentialsProvider({
       name: 'credentials',
@@ -74,21 +73,26 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (user) {
         token.id = user.id
         token.role = (user as { role?: UserRole }).role
+        // Fetch role from DB on initial sign-in (Google doesn't carry role)
+        if (!token.role && token.id) {
+          const dbUser = await db.user.findUnique({
+            where: { id: token.id as string },
+            select: { role: true },
+          })
+          if (dbUser) token.role = dbUser.role
+        }
       }
 
       if (trigger === 'update' && session) {
         token.name = session.name
         token.image = session.image
-      }
-
-      // Refresh role from DB on each request (picks up role changes from onboarding)
-      if (token.id) {
-        const dbUser = await db.user.findUnique({
-          where: { id: token.id as string },
-          select: { role: true, status: true },
-        })
-        if (dbUser) {
-          token.role = dbUser.role
+        // Re-fetch role when session is explicitly updated (e.g. after onboarding)
+        if (token.id) {
+          const dbUser = await db.user.findUnique({
+            where: { id: token.id as string },
+            select: { role: true },
+          })
+          if (dbUser) token.role = dbUser.role
         }
       }
 
