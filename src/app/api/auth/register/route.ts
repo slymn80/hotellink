@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         status: 'success',
-        message: 'Account created successfully. Please check your email to verify.',
+        message: 'Account created successfully. You can now sign in.',
         userId: user.id,
       },
       { status: 201 }
