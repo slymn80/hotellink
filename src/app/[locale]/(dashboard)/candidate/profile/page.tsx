@@ -281,6 +281,7 @@ export default function CandidateProfilePage() {
   const [uploadingGallery, setUploadingGallery] = useState(false)
   const [deletingGallery, setDeletingGallery] = useState<string | null>(null)
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null)
+  const [avatarVersion, setAvatarVersion] = useState(Date.now())
   const [galleryUrls, setGalleryUrls] = useState<string[]>([])
   const [skills, setSkills] = useState<string[]>([])
   const [newSkill, setNewSkill] = useState('')
@@ -386,6 +387,7 @@ export default function CandidateProfilePage() {
       const data = await res.json()
       if (res.ok) {
         setAvatarUrl(data.data.url)
+        setAvatarVersion(Date.now())
         toast.success('Profile photo updated')
       } else {
         toast.error(data.error ?? 'Upload failed')
@@ -630,7 +632,7 @@ export default function CandidateProfilePage() {
         <div className="flex items-center gap-4 mb-5">
           <div className="relative h-20 w-20 flex-shrink-0">
             {avatarUrl ? (
-              <Image src={avatarUrl} alt="Profile photo" width={80} height={80}
+              <Image src={`${avatarUrl}?v=${avatarVersion}`} alt="Profile photo" width={80} height={80}
                 className="h-20 w-20 rounded-2xl object-cover" unoptimized />
             ) : (
               <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-ocean-600 text-white text-2xl font-bold">
