@@ -97,7 +97,11 @@ export async function POST(req: NextRequest) {
       },
     })
 
-    await sendVerificationEmail({ email: user.email, name: user.name, token })
+    try {
+      await sendVerificationEmail({ email: user.email, name: user.name, token })
+    } catch (emailErr) {
+      console.error('[REGISTER] Failed to send verification email:', emailErr)
+    }
 
     return NextResponse.json(
       {
