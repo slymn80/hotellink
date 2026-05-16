@@ -1,0 +1,1041 @@
+// ============================================================
+// HotelLink - Prisma Database Schema
+// Multilingual Hospitality Recruitment Platform
+// ============================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ============================================================
+// ENUMERATIONS
+// ============================================================
+
+enum UserRole {
+  CANDIDATE
+  HOTEL_EMPLOYER
+  HR_AGENCY
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  PENDING_VERIFICATION
+  BANNED
+}
+
+enum ApplicationStatus {
+  DRAFT
+  SUBMITTED
+  REVIEWING
+  SHORTLISTED
+  INTERVIEW_SCHEDULED
+  INTERVIEW_COMPLETED
+  OFFER_EXTENDED
+  OFFER_ACCEPTED
+  OFFER_DECLINED
+  REJECTED
+  WITHDRAWN
+}
+
+enum JobStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  CLOSED
+  EXPIRED
+  FILLED
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  SEASONAL
+  CONTRACT
+  INTERNSHIP
+}
+
+enum JobDepartment {
+  RECEPTION
+  GUEST_RELATIONS
+  HOUSEKEEPING
+  KITCHEN
+  FOOD_BEVERAGE
+  SPA_WELLNESS
+  ANIMATION_ENTERTAINMENT
+  TECHNICAL_MAINTENANCE
+  SECURITY
+  MANAGEMENT
+  IT
+  ACCOUNTING
+  SALES_MARKETING
+  HUMAN_RESOURCES
+  OTHER
+}
+
+enum DocumentType {
+  CV_RESUME
+  PASSPORT
+  VISA
+  WORK_PERMIT
+  RESIDENCE_PERMIT
+  DEGREE_CERTIFICATE
+  LANGUAGE_CERTIFICATE
+  PROFESSIONAL_CERTIFICATE
+  REFERENCE_LETTER
+  CRIMINAL_RECORD
+  HEALTH_CERTIFICATE
+  OTHER
+}
+
+enum DocumentStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+  EXPIRED
+}
+
+enum HotelStatus {
+  PENDING_VERIFICATION
+  VERIFIED
+  SUSPENDED
+  REJECTED
+}
+
+enum HotelType {
+  BOUTIQUE
+  RESORT
+  CITY_HOTEL
+  HOSTEL
+  MOTEL
+  VILLA
+  APART_HOTEL
+  THERMAL_HOTEL
+  CASINO_HOTEL
+  ECO_HOTEL
+}
+
+enum HotelStarRating {
+  ONE
+  TWO
+  THREE
+  FOUR
+  FIVE
+}
+
+enum WorkPermitStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  APPROVED
+  REJECTED
+  EXPIRED
+  NOT_REQUIRED
+}
+
+enum SubscriptionPlan {
+  FREE
+  STARTER
+  PROFESSIONAL
+  ENTERPRISE
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  INACTIVE
+  CANCELLED
+  PAST_DUE
+  TRIALING
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+  CANCELLED
+}
+
+enum MessageStatus {
+  SENT
+  DELIVERED
+  READ
+}
+
+enum NotificationType {
+  APPLICATION_RECEIVED
+  APPLICATION_STATUS_UPDATED
+  MESSAGE_RECEIVED
+  JOB_MATCH
+  INTERVIEW_SCHEDULED
+  DOCUMENT_VERIFIED
+  DOCUMENT_REJECTED
+  SUBSCRIPTION_EXPIRING
+  SUBSCRIPTION_RENEWED
+  PAYMENT_RECEIVED
+  PAYMENT_FAILED
+  HOTEL_VERIFIED
+  HOTEL_REJECTED
+  PROFILE_VIEWED
+  SYSTEM
+}
+
+enum LanguageLevel {
+  BASIC
+  ELEMENTARY
+  INTERMEDIATE
+  UPPER_INTERMEDIATE
+  ADVANCED
+  NATIVE
+}
+
+enum AvailabilityStatus {
+  IMMEDIATELY_AVAILABLE
+  AVAILABLE_IN_2_WEEKS
+  AVAILABLE_IN_1_MONTH
+  AVAILABLE_IN_3_MONTHS
+  NOT_LOOKING
+}
+
+enum VerificationType {
+  HOTEL
+  DOCUMENT
+  IDENTITY
+  AGENCY
+}
+
+enum VerificationStatus {
+  PENDING
+  IN_REVIEW
+  APPROVED
+  REJECTED
+  MORE_INFO_REQUIRED
+}
+
+enum AuditAction {
+  CREATE
+  UPDATE
+  DELETE
+  LOGIN
+  LOGOUT
+  UPLOAD
+  DOWNLOAD
+  VERIFY
+  REJECT
+  SUSPEND
+  ACTIVATE
+  PAYMENT
+  EXPORT
+}
+
+// ============================================================
+// AUTH MODELS (Auth.js / NextAuth compatible)
+// ============================================================
+
+model User {
+  id                String     @id @default(cuid())
+  email             String     @unique
+  emailVerified     DateTime?
+  password          String?
+  name              String?
+  image             String?
+  role              UserRole   @default(CANDIDATE)
+  status            UserStatus @default(ACTIVE)
+  locale            String     @default("en")
+  timezone          String?
+  phone             String?
+  phoneVerified     Boolean    @default(false)
+  twoFactorEnabled  Boolean    @default(false)
+  twoFactorSecret   String?
+  lastLoginAt       DateTime?
+  lastLoginIp       String?
+  loginCount            Int        @default(0)
+  onboardingCompleted   Boolean    @default(false)
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  deletedAt         DateTime?
+
+  // GDPR & compliance
+  gdprConsentAt    DateTime?
+  marketingConsent Boolean   @default(false)
+  dataExportedAt   DateTime?
+
+  // Relations
+  accounts         Account[]
+  sessions         Session[]
+  candidate        CandidateProfile?
+  hotelEmployers   HotelEmployer[]
+  hrAgency         HRAgency?
+  sentMessages     Message[]      @relation("MessageSender")
+  receivedMessages Message[]      @relation("MessageReceiver")
+  notifications    Notification[]
+  auditLogs        AuditLog[]
+  supportTickets   SupportTicket[]
+
+  @@index([email])
+  @@index([role])
+  @@index([status])
+  @@index([createdAt])
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  ipAddress    String?
+  userAgent    String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  type       String   @default("email")
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ============================================================
+// CANDIDATE MODELS
+// ============================================================
+
+model CandidateProfile {
+  id                    String             @id @default(cuid())
+  userId                String             @unique
+  firstName             String
+  lastName              String
+  dateOfBirth           DateTime?
+  gender                String?
+  nationality           String
+  countryOfResidence    String?
+  cityOfResidence       String?
+  passportNumber        String?
+  passportExpiry        DateTime?
+  bio                   String?            @db.Text
+  headline              String?
+  profilePhoto          String?
+  coverPhoto            String?
+  photoUrls             String[]
+  availabilityStatus    AvailabilityStatus @default(IMMEDIATELY_AVAILABLE)
+  availableFrom         DateTime?
+  expectedSalaryMin     Int?
+  expectedSalaryMax     Int?
+  salaryCurrency        String             @default("USD")
+  salaryNegotiable      Boolean            @default(true)
+  yearsOfExperience     Int                @default(0)
+  currentPosition       String?
+  currentCompany        String?
+  workPermitStatus      WorkPermitStatus   @default(NOT_STARTED)
+  workPermitCountry     String?
+  isOpenToRelocation    Boolean            @default(true)
+  accommodationRequired Boolean            @default(false)
+  profileScore          Int                @default(0)
+  isFeatured            Boolean            @default(false)
+  isPublic              Boolean            @default(true)
+  linkedinUrl           String?
+  portfolioUrl          String?
+  videoIntroUrl         String?
+  viewCount             Int                @default(0)
+  averageRating         Decimal?           @db.Decimal(3, 2)
+  reviewCount           Int                @default(0)
+  createdAt             DateTime           @default(now())
+  updatedAt             DateTime           @updatedAt
+
+  // Relations
+  user          User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  languages     CandidateLanguage[]
+  skills        CandidateSkill[]
+  experience    WorkExperience[]
+  education     Education[]
+  certifications Certification[]
+  documents     Document[]
+  applications  Application[]
+  savedJobs     SavedJob[]
+  favoriteHotels FavoriteHotel[]
+  departments      CandidateDepartment[]
+  receivedReviews  CandidateReview[]
+  hotelReviews     HotelReview[]
+
+  @@index([nationality])
+  @@index([availabilityStatus])
+  @@index([profileScore])
+  @@index([isFeatured])
+  @@map("candidate_profiles")
+}
+
+model CandidateLanguage {
+  id          String           @id @default(cuid())
+  candidateId String
+  language    String
+  level       LanguageLevel
+
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@unique([candidateId, language])
+  @@map("candidate_languages")
+}
+
+model CandidateSkill {
+  id          String  @id @default(cuid())
+  candidateId String
+  skill       String
+  yearsOfExp  Int?
+
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@map("candidate_skills")
+}
+
+model CandidateDepartment {
+  id          String        @id @default(cuid())
+  candidateId String
+  department  JobDepartment
+
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@unique([candidateId, department])
+  @@map("candidate_departments")
+}
+
+model WorkExperience {
+  id          String         @id @default(cuid())
+  candidateId String
+  company     String
+  position    String
+  department  JobDepartment?
+  hotelType   HotelType?
+  country     String?
+  city        String?
+  startDate   DateTime
+  endDate     DateTime?
+  isCurrent   Boolean        @default(false)
+  description String?        @db.Text
+  createdAt   DateTime       @default(now())
+
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@map("work_experiences")
+}
+
+model Education {
+  id          String    @id @default(cuid())
+  candidateId String
+  institution String
+  degree      String
+  field       String?
+  country     String?
+  startDate   DateTime
+  endDate     DateTime?
+  isCurrent   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@map("educations")
+}
+
+model Certification {
+  id            String    @id @default(cuid())
+  candidateId   String
+  name          String
+  issuer        String
+  issueDate     DateTime
+  expiryDate    DateTime?
+  credentialId  String?
+  credentialUrl String?
+  createdAt     DateTime  @default(now())
+
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@map("certifications")
+}
+
+model Document {
+  id          String         @id @default(cuid())
+  candidateId String
+  type        DocumentType
+  name        String
+  fileUrl     String
+  fileSize    Int?
+  mimeType    String?
+  status      DocumentStatus @default(PENDING)
+  expiryDate  DateTime?
+  verifiedAt  DateTime?
+  verifiedBy  String?
+  rejectedAt  DateTime?
+  rejectReason String?
+  isPrivate   Boolean        @default(false)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@index([candidateId, type])
+  @@map("documents")
+}
+
+// ============================================================
+// HOTEL MODELS
+// ============================================================
+
+model Hotel {
+  id               String          @id @default(cuid())
+  name             String
+  slug             String          @unique
+  description      String?         @db.Text
+  shortDescription String?
+  type             HotelType
+  starRating       HotelStarRating?
+  status           HotelStatus     @default(PENDING_VERIFICATION)
+  email            String
+  phone            String?
+  website          String?
+  address          String?
+  city             String
+  district         String?
+  state            String?
+  country          String          @default("TR")
+  postalCode       String?
+  latitude         Decimal?        @db.Decimal(10, 8)
+  longitude        Decimal?        @db.Decimal(11, 8)
+  roomCount        Int?
+  employeeCount    Int?
+  foundedYear      Int?
+  logoUrl          String?
+  coverImageUrl    String?
+  galleryUrls      String[]
+  amenities        String[]
+  certifications   String[]
+  languages        String[]
+  isFeatured       Boolean         @default(false)
+  isVerified       Boolean         @default(false)
+  verifiedAt       DateTime?
+  viewCount        Int             @default(0)
+  averageRating    Decimal?        @db.Decimal(3, 2)
+  reviewCount      Int             @default(0)
+  linkedinUrl      String?
+  instagramUrl     String?
+  // Working conditions & accommodation
+  accommodationProvided     Boolean  @default(false)
+  accommodationDescription  String?  @db.Text
+  accommodationPhotoUrls    String[]
+  mealProvided              Boolean  @default(false)
+  transportProvided         Boolean  @default(false)
+  healthInsurance           Boolean  @default(false)
+  uniformProvided           Boolean  @default(false)
+  daysOffPerWeek            Int?
+  workingHoursInfo          String?
+  workingConditionsNotes    String?  @db.Text
+  metaTitle        String?
+  metaDescription  String?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  deletedAt        DateTime?
+
+  // Relations
+  employers     HotelEmployer[]
+  jobs          Job[]
+  applications  Application[]
+  favorites     FavoriteHotel[]
+  subscriptions Subscription[]
+  verifications     Verification[]
+  reviews           HotelReview[]
+  candidateReviews  CandidateReview[]
+
+  @@index([city])
+  @@index([status])
+  @@index([isFeatured])
+  @@index([starRating])
+  @@map("hotels")
+}
+
+model HotelReview {
+  id          String   @id @default(cuid())
+  hotelId     String
+  candidateId String
+  rating      Int
+  title       String?
+  content     String?  @db.Text
+  isAnonymous Boolean  @default(false)
+  isVerified  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  hotel     Hotel            @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@unique([hotelId, candidateId])
+  @@map("hotel_reviews")
+}
+
+model CandidateReview {
+  id          String   @id @default(cuid())
+  candidateId String
+  hotelId     String
+  reviewerId  String
+  rating      Int
+  title       String?
+  content     String?  @db.Text
+  isAnonymous Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  hotel     Hotel            @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+
+  @@unique([candidateId, hotelId])
+  @@map("candidate_reviews")
+}
+
+model HotelEmployer {
+  id         String   @id @default(cuid())
+  userId     String
+  hotelId    String
+  jobTitle   String?
+  department String?
+  isOwner    Boolean  @default(false)
+  isAdmin    Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  hotel Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, hotelId])
+  @@map("hotel_employers")
+}
+
+// ============================================================
+// HR AGENCY MODELS
+// ============================================================
+
+model HRAgency {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  agencyName    String
+  slug          String   @unique
+  description   String?  @db.Text
+  email         String
+  phone         String?
+  website       String?
+  country       String
+  city          String?
+  licenseNumber String?
+  isVerified    Boolean  @default(false)
+  logoUrl       String?
+  coverUrl      String?
+  specialties   String[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user          User                     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  partnerHotels AgencyHotelPartnership[]
+  candidatePools CandidatePool[]
+
+  @@map("hr_agencies")
+}
+
+model AgencyHotelPartnership {
+  id        String   @id @default(cuid())
+  agencyId  String
+  hotelId   String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  agency HRAgency @relation(fields: [agencyId], references: [id])
+
+  @@unique([agencyId, hotelId])
+  @@map("agency_hotel_partnerships")
+}
+
+model CandidatePool {
+  id          String   @id @default(cuid())
+  agencyId    String
+  name        String
+  description String?
+  isPublic    Boolean  @default(false)
+  filters     Json?
+  createdAt   DateTime @default(now())
+
+  agency HRAgency @relation(fields: [agencyId], references: [id])
+
+  @@map("candidate_pools")
+}
+
+// ============================================================
+// JOB MODELS
+// ============================================================
+
+model Job {
+  id                   String        @id @default(cuid())
+  hotelId              String
+  title                String
+  slug                 String        @unique
+  description          String        @db.Text
+  requirements         String?       @db.Text
+  responsibilities     String?       @db.Text
+  benefits             String?       @db.Text
+  department           JobDepartment
+  type                 JobType       @default(FULL_TIME)
+  status               JobStatus     @default(DRAFT)
+  experienceMin        Int           @default(0)
+  experienceMax        Int?
+  salaryMin            Int?
+  salaryMax            Int?
+  salaryCurrency       String        @default("USD")
+  salaryPeriod         String        @default("MONTHLY")
+  showSalary           Boolean       @default(true)
+  requiredLanguages    String[]
+  preferredNationalities String[]
+  accommodationProvided Boolean      @default(false)
+  mealProvided         Boolean       @default(false)
+  transportProvided    Boolean       @default(false)
+  visaSponsorship      Boolean       @default(false)
+  workPermitAssistance Boolean       @default(false)
+  isFeatured           Boolean       @default(false)
+  applicationDeadline  DateTime?
+  startDate            DateTime?
+  city                 String?
+  country              String        @default("TR")
+  openings             Int           @default(1)
+  viewCount            Int           @default(0)
+  applicationCount     Int           @default(0)
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  publishedAt          DateTime?
+  closedAt             DateTime?
+  deletedAt            DateTime?
+
+  // Relations
+  hotel        Hotel            @relation(fields: [hotelId], references: [id])
+  applications Application[]
+  savedBy      SavedJob[]
+  translations JobTranslation[]
+
+  @@index([hotelId])
+  @@index([department])
+  @@index([status])
+  @@index([isFeatured])
+  @@index([country, city])
+  @@map("jobs")
+}
+
+model JobTranslation {
+  id               String  @id @default(cuid())
+  jobId            String
+  locale           String
+  title            String
+  description      String  @db.Text
+  requirements     String? @db.Text
+  responsibilities String? @db.Text
+  benefits         String? @db.Text
+
+  job Job @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([jobId, locale])
+  @@map("job_translations")
+}
+
+model Application {
+  id             String            @id @default(cuid())
+  jobId          String
+  hotelId        String
+  candidateId    String
+  coverLetter    String?           @db.Text
+  status         ApplicationStatus @default(SUBMITTED)
+  appliedVia     String?
+  agencyId       String?
+  interviewDate  DateTime?
+  interviewType  String?
+  interviewNotes String?           @db.Text
+  employerNotes  String?           @db.Text
+  candidateNotes String?           @db.Text
+  offerDetails   String?           @db.Text
+  offerSalary    Int?
+  offerStartDate DateTime?
+  isStarred      Boolean           @default(false)
+  viewedAt       DateTime?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  job       Job              @relation(fields: [jobId], references: [id])
+  hotel     Hotel            @relation(fields: [hotelId], references: [id])
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id])
+
+  @@unique([jobId, candidateId])
+  @@index([status])
+  @@index([candidateId])
+  @@index([hotelId])
+  @@map("applications")
+}
+
+model SavedJob {
+  id          String   @id @default(cuid())
+  candidateId String
+  jobId       String
+  createdAt   DateTime @default(now())
+
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  job       Job              @relation(fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([candidateId, jobId])
+  @@map("saved_jobs")
+}
+
+model FavoriteHotel {
+  id          String   @id @default(cuid())
+  candidateId String
+  hotelId     String
+  createdAt   DateTime @default(now())
+
+  candidate CandidateProfile @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  hotel     Hotel            @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+
+  @@unique([candidateId, hotelId])
+  @@map("favorite_hotels")
+}
+
+// ============================================================
+// MESSAGING & NOTIFICATIONS
+// ============================================================
+
+model Message {
+  id          String        @id @default(cuid())
+  senderId    String
+  receiverId  String
+  content     String        @db.Text
+  status      MessageStatus @default(SENT)
+  readAt      DateTime?
+  attachments String[]
+  metadata    Json?
+  isDeleted   Boolean       @default(false)
+  deletedAt   DateTime?
+  createdAt   DateTime      @default(now())
+
+  sender   User @relation("MessageSender", fields: [senderId], references: [id])
+  receiver User @relation("MessageReceiver", fields: [receiverId], references: [id])
+
+  @@index([senderId, receiverId])
+  @@index([receiverId, status])
+  @@index([createdAt])
+  @@map("messages")
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  type      NotificationType
+  title     String
+  body      String
+  data      Json?
+  isRead    Boolean          @default(false)
+  readAt    DateTime?
+  actionUrl String?
+  createdAt DateTime         @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead])
+  @@index([createdAt])
+  @@map("notifications")
+}
+
+// ============================================================
+// SUBSCRIPTIONS & PAYMENTS
+// ============================================================
+
+model Subscription {
+  id                   String             @id @default(cuid())
+  hotelId              String
+  plan                 SubscriptionPlan
+  status               SubscriptionStatus @default(ACTIVE)
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  stripePriceId        String?
+  currentPeriodStart   DateTime
+  currentPeriodEnd     DateTime
+  cancelAtPeriodEnd    Boolean            @default(false)
+  cancelledAt          DateTime?
+  trialStart           DateTime?
+  trialEnd             DateTime?
+  jobPostingLimit      Int                @default(1)
+  featuredJobLimit     Int                @default(0)
+  candidateViewLimit   Int                @default(10)
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+
+  hotel    Hotel     @relation(fields: [hotelId], references: [id])
+  payments Payment[]
+
+  @@map("subscriptions")
+}
+
+model Payment {
+  id              String        @id @default(cuid())
+  subscriptionId  String?
+  hotelId         String?
+  amount          Decimal       @db.Decimal(10, 2)
+  currency        String        @default("USD")
+  status          PaymentStatus @default(PENDING)
+  stripePaymentId String?
+  stripeInvoiceId String?
+  description     String?
+  metadata        Json?
+  paidAt          DateTime?
+  failedAt        DateTime?
+  refundedAt      DateTime?
+  createdAt       DateTime      @default(now())
+
+  subscription Subscription? @relation(fields: [subscriptionId], references: [id])
+
+  @@map("payments")
+}
+
+// ============================================================
+// VERIFICATION & ADMIN
+// ============================================================
+
+model Verification {
+  id          String             @id @default(cuid())
+  type        VerificationType
+  entityId    String
+  entityType  String
+  status      VerificationStatus @default(PENDING)
+  submittedAt DateTime           @default(now())
+  reviewedAt  DateTime?
+  reviewedBy  String?
+  notes       String?            @db.Text
+  documents   String[]
+
+  hotel Hotel? @relation(fields: [entityId], references: [id])
+
+  @@map("verifications")
+}
+
+model AuditLog {
+  id         String      @id @default(cuid())
+  userId     String?
+  action     AuditAction
+  resource   String
+  resourceId String?
+  oldValues  Json?
+  newValues  Json?
+  ipAddress  String?
+  userAgent  String?
+  metadata   Json?
+  createdAt  DateTime    @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([resource, resourceId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+model SupportTicket {
+  id          String   @id @default(cuid())
+  userId      String
+  subject     String
+  description String   @db.Text
+  status      String   @default("OPEN")
+  priority    String   @default("MEDIUM")
+  category    String?
+  assignedTo  String?
+  resolvedAt  DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user    User           @relation(fields: [userId], references: [id])
+  replies SupportReply[]
+
+  @@map("support_tickets")
+}
+
+model SupportReply {
+  id        String        @id @default(cuid())
+  ticketId  String
+  authorId  String
+  content   String        @db.Text
+  isStaff   Boolean       @default(false)
+  createdAt DateTime      @default(now())
+
+  ticket SupportTicket @relation(fields: [ticketId], references: [id])
+
+  @@map("support_replies")
+}
+
+// ============================================================
+// CONTENT & SETTINGS
+// ============================================================
+
+model ContentTranslation {
+  id        String   @id @default(cuid())
+  key       String
+  locale    String
+  value     String   @db.Text
+  namespace String   @default("common")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([key, locale, namespace])
+  @@map("content_translations")
+}
+
+model SiteSettings {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String   @db.Text
+  type      String   @default("string")
+  group     String   @default("general")
+  isPublic  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("site_settings")
+}
+
+model FeaturedSlot {
+  id          String   @id @default(cuid())
+  entityType  String
+  entityId    String
+  position    Int
+  startsAt    DateTime
+  endsAt      DateTime
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@map("featured_slots")
+}

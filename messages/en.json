@@ -1,0 +1,439 @@
+{
+  "nav": {
+    "jobs": "Find Jobs",
+    "hotels": "Hotels",
+    "candidates": "Candidates",
+    "pricing": "Pricing",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Sign In",
+    "register": "Get Started",
+    "dashboard": "Dashboard",
+    "signOut": "Sign Out",
+    "forHotels": "For Hotels",
+    "forCandidates": "For Candidates"
+  },
+  "hero": {
+    "badge": "The #1 Hospitality Recruitment Platform in Türkiye",
+    "headline": "Connect Global Talent with Turkish Hospitality",
+    "headlineHighlight": "Turkish Hospitality",
+    "subheadline": "HotelLink bridges the gap between world-class hotels in Türkiye and skilled foreign workers seeking legal employment. Work permit support included.",
+    "ctaHotels": "Post Jobs Free",
+    "ctaCandidates": "Find Opportunities",
+    "ctaLearnMore": "Learn More",
+    "trustBadge": "Trusted by 500+ hotels across Türkiye",
+    "scrollDown": "Scroll to explore"
+  },
+  "stats": {
+    "title": "Powering hospitality recruitment across Türkiye",
+    "hotels": "Hotels & Resorts",
+    "candidates": "Registered Candidates",
+    "placements": "Successful Placements",
+    "countries": "Countries Represented",
+    "hotelsDesc": "Verified hotels and resort partners",
+    "candidatesDesc": "Skilled foreign workers registered",
+    "placementsDesc": "Successful hires in 2024",
+    "countriesDesc": "Nationalities on our platform"
+  },
+  "howItWorks": {
+    "title": "How HotelLink Works",
+    "subtitle": "Whether you're a hotel looking to hire or a professional seeking opportunities in Türkiye, our platform makes it seamless.",
+    "tabHotels": "For Hotels",
+    "tabCandidates": "For Candidates",
+    "hotelsSteps": [
+      {
+        "step": "01",
+        "title": "Create Your Hotel Profile",
+        "description": "Showcase your property with photos, amenities, and company culture to attract the best international talent."
+      },
+      {
+        "step": "02",
+        "title": "Post Job Openings",
+        "description": "List positions with detailed requirements, salary ranges, and benefits including accommodation and work permit support."
+      },
+      {
+        "step": "03",
+        "title": "Review & Hire",
+        "description": "Browse verified candidates, review CVs and documents, schedule interviews, and make offers — all in one place."
+      }
+    ],
+    "candidatesSteps": [
+      {
+        "step": "01",
+        "title": "Build Your Profile",
+        "description": "Create a comprehensive profile with your experience, skills, language abilities, and upload your documents."
+      },
+      {
+        "step": "02",
+        "title": "Discover Opportunities",
+        "description": "Browse hundreds of jobs at top Turkish hotels and resorts, filtered by department, location, and salary."
+      },
+      {
+        "step": "03",
+        "title": "Get Hired Legally",
+        "description": "Apply, communicate with employers, and get full work permit assistance for your legal employment in Türkiye."
+      }
+    ]
+  },
+  "features": {
+    "title": "Everything You Need to Hire or Get Hired",
+    "subtitle": "A complete ecosystem for international hospitality recruitment, built specifically for the Turkish market.",
+    "items": [
+      {
+        "title": "Smart Candidate Matching",
+        "description": "AI-powered matching connects hotels with the most relevant candidates based on skills, experience, and availability."
+      },
+      {
+        "title": "Work Permit Support",
+        "description": "Step-by-step guidance and document management for Turkish work permit applications for foreign workers."
+      },
+      {
+        "title": "Multilingual Platform",
+        "description": "Full support for Turkish, English, and Russian with RTL-ready architecture for Arabic and more."
+      },
+      {
+        "title": "Document Management",
+        "description": "Securely upload and verify passports, CVs, certificates, and work permits with our encrypted storage."
+      },
+      {
+        "title": "Integrated Messaging",
+        "description": "Real-time communication between candidates and hotel HR teams with translation support."
+      },
+      {
+        "title": "Analytics Dashboard",
+        "description": "Comprehensive insights on applications, views, and hiring metrics for hotels and HR agencies."
+      }
+    ]
+  },
+  "departments": {
+    "title": "Top Job Categories",
+    "subtitle": "From luxury resorts to boutique hotels, we cover every role in hospitality.",
+    "reception": "Reception",
+    "guestRelations": "Guest Relations",
+    "housekeeping": "Housekeeping",
+    "kitchen": "Kitchen & Chef",
+    "foodBeverage": "Food & Beverage",
+    "spaWellness": "Spa & Wellness",
+    "animation": "Animation",
+    "technical": "Technical Staff",
+    "security": "Security",
+    "management": "Management",
+    "it": "IT",
+    "salesMarketing": "Sales & Marketing"
+  },
+  "hotelShowcase": {
+    "title": "Featured Hotels & Resorts",
+    "subtitle": "Join hundreds of premium hotels already using HotelLink to find their international teams.",
+    "viewAll": "View All Hotels",
+    "openPositions": "open positions",
+    "verified": "Verified Partner",
+    "viewProfile": "View Hotel"
+  },
+  "candidateShowcase": {
+    "title": "Top Talent Available Now",
+    "subtitle": "Browse skilled hospitality professionals ready to work in Türkiye.",
+    "viewAll": "Browse All Candidates",
+    "yearsExp": "yrs exp",
+    "available": "Available Now",
+    "viewProfile": "View Profile",
+    "nationality": "Nationality",
+    "languages": "Languages",
+    "experience": "Experience"
+  },
+  "testimonials": {
+    "title": "Trusted by Hotels & Professionals Across the Globe",
+    "subtitle": "Real stories from hotels and candidates who found success through HotelLink."
+  },
+  "pricing": {
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Choose the plan that fits your hiring needs. No hidden fees.",
+    "monthly": "Monthly",
+    "annual": "Annual",
+    "savePercent": "Save 20%",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "mostPopular": "Most Popular",
+    "getStarted": "Get Started",
+    "contactSales": "Contact Sales",
+    "startFree": "Start Free",
+    "plans": {
+      "free": {
+        "name": "Free",
+        "description": "Perfect for small properties getting started.",
+        "features": [
+          "1 active job posting",
+          "Basic hotel profile",
+          "Up to 10 candidate views/month",
+          "Email support"
+        ]
+      },
+      "starter": {
+        "name": "Starter",
+        "price": 49,
+        "description": "For growing hotels ready to scale their team.",
+        "features": [
+          "10 active job postings",
+          "Enhanced hotel profile with gallery",
+          "Unlimited candidate views",
+          "1 featured job listing",
+          "Advanced candidate filters",
+          "Messaging system",
+          "Priority support"
+        ]
+      },
+      "professional": {
+        "name": "Professional",
+        "price": 149,
+        "description": "For serious hiring with premium features.",
+        "features": [
+          "Unlimited job postings",
+          "Premium hotel profile + spotlight",
+          "Featured on homepage",
+          "5 featured job listings",
+          "Candidate shortlisting tools",
+          "Interview scheduling",
+          "Analytics dashboard",
+          "API access",
+          "Dedicated account manager"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "For hotel chains and HR agencies.",
+        "features": [
+          "Everything in Professional",
+          "Multi-property management",
+          "Custom branding",
+          "HR agency tools",
+          "Candidate pools",
+          "White-label options",
+          "SLA support",
+          "Custom integrations"
+        ]
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about HotelLink.",
+    "items": [
+      {
+        "question": "How does HotelLink help with work permits?",
+        "answer": "HotelLink provides a comprehensive work permit workflow tool. We guide both hotels and candidates through the Turkish work permit application process, with document checklists, status tracking, and expert guidance."
+      },
+      {
+        "question": "What nationalities can apply for jobs in Türkiye?",
+        "answer": "Workers from most countries can apply for jobs in Türkiye. Common nationalities on our platform include Ukrainian, Russian, Uzbek, Kyrgyz, Kazakh, Georgian, Filipino, and many more. Specific visa requirements vary by nationality."
+      },
+      {
+        "question": "How are hotels verified on HotelLink?",
+        "answer": "All hotels go through a verification process where we check their business registration, tax ID, and other official documents. Verified hotels display a badge on their profile, giving candidates confidence in the legitimacy of the opportunity."
+      },
+      {
+        "question": "Is it free for candidates to use HotelLink?",
+        "answer": "Yes, HotelLink is completely free for job seekers. Creating a profile, uploading documents, browsing jobs, and applying are all free of charge."
+      },
+      {
+        "question": "What hotel types are on the platform?",
+        "answer": "We work with all types of hospitality businesses including 5-star luxury resorts, boutique hotels, thermal hotels, apart-hotels, city hotels, and more — primarily in tourism hotspots like Antalya, Istanbul, Bodrum, Marmaris, and Cappadocia."
+      },
+      {
+        "question": "Can HR agencies use HotelLink?",
+        "answer": "Yes! HR agencies have a dedicated plan with tools for managing candidate pools, submitting bulk applications, tracking placements, and building partnerships with hotels."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Transform Your Hospitality Hiring?",
+    "subtitle": "Join 500+ hotels and 50,000+ candidates already on HotelLink. Start building your international team today.",
+    "forHotels": "Post Jobs for Free",
+    "forCandidates": "Create Your Profile",
+    "noCreditCard": "No credit card required"
+  },
+  "footer": {
+    "tagline": "The multilingual hospitality recruitment platform connecting global talent with Turkish hotels.",
+    "platform": "Platform",
+    "forHotels": "For Hotels",
+    "forCandidates": "For Candidates",
+    "forAgencies": "For Agencies",
+    "pricing": "Pricing",
+    "jobs": "Browse Jobs",
+    "hotels": "Browse Hotels",
+    "company": "Company",
+    "about": "About Us",
+    "blog": "Blog",
+    "careers": "Careers",
+    "press": "Press",
+    "partners": "Partners",
+    "support": "Support",
+    "helpCenter": "Help Center",
+    "contact": "Contact Us",
+    "workPermitGuide": "Work Permit Guide",
+    "status": "System Status",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "gdpr": "GDPR",
+    "cookies": "Cookie Policy",
+    "rights": "All rights reserved.",
+    "madeIn": "Made with care in Türkiye"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to your HotelLink account",
+      "email": "Email address",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "signIn": "Sign In",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "orContinueWith": "Or continue with",
+      "google": "Continue with Google",
+      "linkedin": "Continue with LinkedIn"
+    },
+    "register": {
+      "title": "Create your account",
+      "subtitle": "Join thousands of hotels and candidates on HotelLink",
+      "selectRole": "I am a...",
+      "candidate": "Job Seeker",
+      "candidateDesc": "Looking for hospitality jobs in Türkiye",
+      "hotel": "Hotel / Employer",
+      "hotelDesc": "Looking to hire international staff",
+      "agency": "HR Agency",
+      "agencyDesc": "Managing candidates and hotel placements",
+      "name": "Full Name",
+      "email": "Email address",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "agreeTerms": "I agree to the Terms of Service and Privacy Policy",
+      "createAccount": "Create Account",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "verifyEmail": "Check your email",
+      "verifyEmailDesc": "We've sent a verification link to your email address."
+    },
+    "forgotPassword": {
+      "title": "Reset your password",
+      "subtitle": "Enter your email to receive reset instructions",
+      "email": "Email address",
+      "sendReset": "Send Reset Link",
+      "backToLogin": "Back to login",
+      "checkEmail": "Check your inbox",
+      "checkEmailDesc": "We've sent password reset instructions to your email."
+    }
+  },
+  "dashboard": {
+    "candidate": {
+      "title": "Candidate Dashboard",
+      "welcome": "Welcome back",
+      "profileScore": "Profile Completeness",
+      "completeProfile": "Complete your profile to get noticed by top hotels",
+      "stats": {
+        "applications": "Applications",
+        "savedJobs": "Saved Jobs",
+        "profileViews": "Profile Views",
+        "messages": "Messages"
+      },
+      "recentApplications": "Recent Applications",
+      "recommendedJobs": "Recommended Jobs",
+      "documents": "Documents",
+      "noApplications": "No applications yet. Start applying!",
+      "browseJobs": "Browse Jobs"
+    },
+    "hotel": {
+      "title": "Hotel Dashboard",
+      "welcome": "Welcome back",
+      "stats": {
+        "activeJobs": "Active Jobs",
+        "totalApplications": "Total Applications",
+        "newApplications": "New This Week",
+        "shortlisted": "Shortlisted"
+      },
+      "recentApplications": "Recent Applications",
+      "activeJobs": "Active Job Postings",
+      "postJob": "Post New Job",
+      "viewCandidates": "Browse Candidates",
+      "subscriptionStatus": "Subscription Status"
+    },
+    "admin": {
+      "title": "Admin Dashboard",
+      "stats": {
+        "totalUsers": "Total Users",
+        "totalHotels": "Total Hotels",
+        "totalJobs": "Active Jobs",
+        "totalApplications": "Applications",
+        "revenue": "Monthly Revenue",
+        "pendingVerifications": "Pending Verifications"
+      },
+      "userGrowth": "User Growth",
+      "recentActivity": "Recent Activity",
+      "pendingVerifications": "Pending Verifications",
+      "verify": "Verify",
+      "reject": "Reject"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "apply": "Apply",
+    "share": "Share",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "noResults": "No results found",
+    "seeAll": "See all",
+    "learnMore": "Learn more",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "open": "Open",
+    "yes": "Yes",
+    "no": "No",
+    "required": "Required",
+    "optional": "Optional",
+    "new": "New",
+    "featured": "Featured",
+    "verified": "Verified",
+    "pending": "Pending",
+    "active": "Active",
+    "inactive": "Inactive",
+    "fullTime": "Full Time",
+    "partTime": "Part Time",
+    "seasonal": "Seasonal",
+    "contract": "Contract"
+  },
+  "jobs": {
+    "title": "Find Your Perfect Hospitality Job",
+    "subtitle": "Hundreds of opportunities at top hotels and resorts across Türkiye",
+    "searchPlaceholder": "Job title, department, or hotel...",
+    "locationPlaceholder": "City or region",
+    "filters": {
+      "department": "Department",
+      "jobType": "Job Type",
+      "salary": "Salary Range",
+      "language": "Required Language",
+      "benefits": "Benefits",
+      "workPermit": "Work Permit Support",
+      "accommodation": "Accommodation"
+    },
+    "card": {
+      "applyNow": "Apply Now",
+      "saveJob": "Save Job",
+      "viewHotel": "View Hotel",
+      "postedAgo": "Posted",
+      "deadline": "Deadline",
+      "openings": "openings",
+      "salary": "Salary",
+      "accommodation": "Accommodation included",
+      "workPermit": "Work permit support"
+    }
+  }
+}

@@ -1,0 +1,389 @@
+{
+  "nav": {
+    "jobs": "İş Bul",
+    "hotels": "Oteller",
+    "candidates": "Adaylar",
+    "pricing": "Fiyatlar",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "login": "Giriş Yap",
+    "register": "Başla",
+    "dashboard": "Panel",
+    "signOut": "Çıkış Yap",
+    "forHotels": "Oteller İçin",
+    "forCandidates": "Adaylar İçin"
+  },
+  "hero": {
+    "badge": "Türkiye'nin #1 Otelcilik İşe Alım Platformu",
+    "headline": "Global Yeteneği Türk Otelciliğiyle Buluştur",
+    "headlineHighlight": "Türk Otelciliğiyle",
+    "subheadline": "HotelLink, Türkiye'deki dünya standartlarındaki otelleri yasal istihdam fırsatı arayan nitelikli yabancı çalışanlarla buluşturuyor. Çalışma izni desteği dahil.",
+    "ctaHotels": "Ücretsiz İş İlanı Ver",
+    "ctaCandidates": "Fırsatları Keşfet",
+    "ctaLearnMore": "Daha Fazla",
+    "trustBadge": "Türkiye genelinde 500+ otel tarafından güveniliyor",
+    "scrollDown": "Keşfetmek için kaydır"
+  },
+  "stats": {
+    "title": "Türkiye genelinde otelcilik işe alımını güçlendiriyoruz",
+    "hotels": "Otel ve Tatil Köyü",
+    "candidates": "Kayıtlı Aday",
+    "placements": "Başarılı Yerleştirme",
+    "countries": "Temsil Edilen Ülke",
+    "hotelsDesc": "Doğrulanmış otel ve tatil köyü ortakları",
+    "candidatesDesc": "Kayıtlı nitelikli yabancı çalışan",
+    "placementsDesc": "2024'te başarılı işe alımlar",
+    "countriesDesc": "Platformumuzdaki milliyetler"
+  },
+  "howItWorks": {
+    "title": "HotelLink Nasıl Çalışır?",
+    "subtitle": "İster işe alım yapan bir otel olun ister Türkiye'de fırsat arayan bir profesyonel, platformumuz süreci kolaylaştırır.",
+    "tabHotels": "Oteller İçin",
+    "tabCandidates": "Adaylar İçin",
+    "hotelsSteps": [
+      {
+        "step": "01",
+        "title": "Otel Profilinizi Oluşturun",
+        "description": "Mülkünüzü fotoğraflar, imkânlar ve şirket kültürüyle vitrine çıkarın; en iyi uluslararası yetenekleri çekin."
+      },
+      {
+        "step": "02",
+        "title": "İş İlanlarınızı Yayınlayın",
+        "description": "Pozisyonları ayrıntılı gereksinimler, maaş aralıkları ve konaklama ile çalışma izni desteği gibi avantajlarla listeleyin."
+      },
+      {
+        "step": "03",
+        "title": "İnceleyin ve İşe Alın",
+        "description": "Doğrulanmış adayları inceleyin, CV ve belgeleri gözden geçirin, mülakatlar planlayın ve teklifleri tek bir yerden yönetin."
+      }
+    ],
+    "candidatesSteps": [
+      {
+        "step": "01",
+        "title": "Profilinizi Oluşturun",
+        "description": "Deneyiminizi, becerilerinizi, dil yetkinliklerinizi içeren kapsamlı bir profil oluşturun ve belgelerinizi yükleyin."
+      },
+      {
+        "step": "02",
+        "title": "Fırsatları Keşfedin",
+        "description": "Türkiye'nin önde gelen otel ve tatil köylerindeki yüzlerce işi departman, konum ve maaşa göre filtreleyin."
+      },
+      {
+        "step": "03",
+        "title": "Yasal Olarak İşe Girin",
+        "description": "Başvurun, işverenlerle iletişim kurun ve Türkiye'deki yasal çalışmanız için tam çalışma izni desteği alın."
+      }
+    ]
+  },
+  "features": {
+    "title": "İşe Almak veya İş Bulmak İçin Her Şey",
+    "subtitle": "Türkiye pazarı için özel olarak tasarlanmış, uluslararası otelcilik işe alımı için eksiksiz bir ekosistem.",
+    "items": [
+      {
+        "title": "Akıllı Aday Eşleştirme",
+        "description": "Yapay zeka destekli eşleştirme, otelleri beceri, deneyim ve müsaitliğe göre en ilgili adaylarla buluşturur."
+      },
+      {
+        "title": "Çalışma İzni Desteği",
+        "description": "Yabancı çalışanlar için Türk çalışma izni başvurularında adım adım rehberlik ve belge yönetimi."
+      },
+      {
+        "title": "Çok Dilli Platform",
+        "description": "Türkçe, İngilizce ve Rusça için tam destek; Arapça ve daha fazlası için RTL hazır mimari."
+      },
+      {
+        "title": "Belge Yönetimi",
+        "description": "Pasaport, CV, sertifika ve çalışma izinlerini şifreli depolamamızla güvenle yükleyin ve doğrulatın."
+      },
+      {
+        "title": "Entegre Mesajlaşma",
+        "description": "Adaylar ile otel İK ekipleri arasında çeviri desteğiyle gerçek zamanlı iletişim."
+      },
+      {
+        "title": "Analitik Paneli",
+        "description": "Oteller ve İK ajansları için başvuru, görüntüleme ve işe alım metrikleri hakkında kapsamlı içgörüler."
+      }
+    ]
+  },
+  "departments": {
+    "title": "Öne Çıkan İş Kategorileri",
+    "subtitle": "Lüks tatil köylerinden butik otellere kadar otelcilikteki her pozisyonu kapsıyoruz.",
+    "reception": "Resepsiyon",
+    "guestRelations": "Misafir İlişkileri",
+    "housekeeping": "Kat Hizmetleri",
+    "kitchen": "Mutfak ve Şef",
+    "foodBeverage": "Yiyecek & İçecek",
+    "spaWellness": "Spa & Wellness",
+    "animation": "Animasyon",
+    "technical": "Teknik Personel",
+    "security": "Güvenlik",
+    "management": "Yönetim",
+    "it": "Bilişim",
+    "salesMarketing": "Satış & Pazarlama"
+  },
+  "hotelShowcase": {
+    "title": "Öne Çıkan Otel ve Tatil Köyleri",
+    "subtitle": "Uluslararası ekiplerini bulmak için halihazırda HotelLink kullanan yüzlerce premium otele katılın.",
+    "viewAll": "Tüm Otelleri Gör",
+    "openPositions": "açık pozisyon",
+    "verified": "Doğrulanmış Ortak",
+    "viewProfile": "Oteli İncele"
+  },
+  "candidateShowcase": {
+    "title": "Şu An Müsait Olan Üst Yetenekler",
+    "subtitle": "Türkiye'de çalışmaya hazır nitelikli otelcilik profesyonellerine göz atın.",
+    "viewAll": "Tüm Adayları Gözat",
+    "yearsExp": "yıl deneyim",
+    "available": "Hemen Müsait",
+    "viewProfile": "Profili İncele",
+    "nationality": "Uyruk",
+    "languages": "Diller",
+    "experience": "Deneyim"
+  },
+  "testimonials": {
+    "title": "Dünya Genelindeki Oteller ve Profesyonellerin Güveni",
+    "subtitle": "HotelLink aracılığıyla başarıya ulaşan otel ve adayların gerçek hikayeleri."
+  },
+  "pricing": {
+    "title": "Basit ve Şeffaf Fiyatlandırma",
+    "subtitle": "İşe alım ihtiyaçlarınıza uygun planı seçin. Gizli ücret yok.",
+    "monthly": "Aylık",
+    "annual": "Yıllık",
+    "savePercent": "%20 Tasarruf",
+    "perMonth": "/ay",
+    "perYear": "/yıl",
+    "mostPopular": "En Popüler",
+    "getStarted": "Başla",
+    "contactSales": "Satış ile İletişim",
+    "startFree": "Ücretsiz Başla",
+    "plans": {
+      "free": {
+        "name": "Ücretsiz",
+        "description": "Başlangıç yapan küçük işletmeler için ideal.",
+        "features": [
+          "1 aktif iş ilanı",
+          "Temel otel profili",
+          "Aylık 10'a kadar aday görüntüleme",
+          "E-posta desteği"
+        ]
+      },
+      "starter": {
+        "name": "Başlangıç",
+        "price": 49,
+        "description": "Ekibini büyütmek isteyen oteller için.",
+        "features": [
+          "10 aktif iş ilanı",
+          "Galeri ile gelişmiş otel profili",
+          "Sınırsız aday görüntüleme",
+          "1 öne çıkan iş ilanı",
+          "Gelişmiş aday filtreleri",
+          "Mesajlaşma sistemi",
+          "Öncelikli destek"
+        ]
+      },
+      "professional": {
+        "name": "Profesyonel",
+        "price": 149,
+        "description": "Premium özelliklerle ciddi işe alım için.",
+        "features": [
+          "Sınırsız iş ilanı",
+          "Premium otel profili + spotlight",
+          "Ana sayfada öne çıkarılma",
+          "5 öne çıkan iş ilanı",
+          "Aday kısa listeleme araçları",
+          "Mülakat planlama",
+          "Analitik paneli",
+          "API erişimi",
+          "Özel hesap yöneticisi"
+        ]
+      },
+      "enterprise": {
+        "name": "Kurumsal",
+        "description": "Otel zincirleri ve İK ajansları için.",
+        "features": [
+          "Profesyonel plandaki her şey",
+          "Çok mülk yönetimi",
+          "Özel marka",
+          "İK ajansı araçları",
+          "Aday havuzları",
+          "Beyaz etiket seçenekleri",
+          "SLA desteği",
+          "Özel entegrasyonlar"
+        ]
+      }
+    }
+  },
+  "faq": {
+    "title": "Sık Sorulan Sorular",
+    "subtitle": "HotelLink hakkında bilmeniz gereken her şey.",
+    "items": [
+      {
+        "question": "HotelLink çalışma izni konusunda nasıl yardımcı olur?",
+        "answer": "HotelLink kapsamlı bir çalışma izni iş akışı aracı sunar. Otellere ve adaylara, belge kontrol listeleri, durum takibi ve uzman rehberliğiyle Türk çalışma izni başvuru sürecinde yol gösteriyoruz."
+      },
+      {
+        "question": "Hangi milliyetler Türkiye'deki işlere başvurabilir?",
+        "answer": "Çoğu ülkeden çalışanlar Türkiye'deki işlere başvurabilir. Platformumuzda yaygın milliyetler arasında Ukraynalı, Rus, Özbek, Kırgız, Kazak, Gürcü, Filipinli ve çok daha fazlası yer almaktadır."
+      },
+      {
+        "question": "HotelLink'te oteller nasıl doğrulanır?",
+        "answer": "Tüm oteller, ticaret sicili, vergi kimliği ve diğer resmi belgelerini kontrol ettiğimiz bir doğrulama sürecinden geçer. Doğrulanmış oteller profillerinde bir rozet göstererek adaylara güven verir."
+      },
+      {
+        "question": "Adaylar için HotelLink kullanmak ücretsiz midir?",
+        "answer": "Evet, HotelLink iş arayanlar için tamamen ücretsizdir. Profil oluşturma, belge yükleme, iş arama ve başvuru yapma tamamen ücretsizdir."
+      },
+      {
+        "question": "Platformda hangi otel türleri bulunur?",
+        "answer": "Antalya, İstanbul, Bodrum, Marmaris ve Kapadokya gibi turizm merkezlerinde 5 yıldızlı lüks tatil köyleri, butik oteller, termal oteller, apart oteller ve şehir otellerini kapsayan tüm türdeki konaklama işletmeleriyle çalışıyoruz."
+      },
+      {
+        "question": "İK ajansları HotelLink'i kullanabilir mi?",
+        "answer": "Evet! İK ajanslarının aday havuzlarını yönetmesi, toplu başvurular göndermesi, yerleştirmeleri takip etmesi ve otellerle ortaklıklar kurması için özel bir planımız bulunmaktadır."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Otelcilik İşe Alımınızı Dönüştürmeye Hazır mısınız?",
+    "subtitle": "HotelLink'teki 500+ otel ve 50.000+ adaya katılın. Uluslararası ekibinizi bugün kurmaya başlayın.",
+    "forHotels": "Ücretsiz İş İlanı Ver",
+    "forCandidates": "Profilinizi Oluşturun",
+    "noCreditCard": "Kredi kartı gerekmez"
+  },
+  "footer": {
+    "tagline": "Global yetenekleri Türk otelleriyle buluşturan çok dilli otelcilik işe alım platformu.",
+    "platform": "Platform",
+    "forHotels": "Oteller İçin",
+    "forCandidates": "Adaylar İçin",
+    "forAgencies": "Ajanslar İçin",
+    "pricing": "Fiyatlar",
+    "jobs": "İşlere Gözat",
+    "hotels": "Otellere Gözat",
+    "company": "Şirket",
+    "about": "Hakkımızda",
+    "blog": "Blog",
+    "careers": "Kariyer",
+    "press": "Basın",
+    "partners": "Ortaklar",
+    "support": "Destek",
+    "helpCenter": "Yardım Merkezi",
+    "contact": "Bize Ulaşın",
+    "workPermitGuide": "Çalışma İzni Rehberi",
+    "status": "Sistem Durumu",
+    "legal": "Yasal",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Koşulları",
+    "gdpr": "KVKK",
+    "cookies": "Çerez Politikası",
+    "rights": "Tüm hakları saklıdır.",
+    "madeIn": "Türkiye'de sevgiyle yapıldı"
+  },
+  "auth": {
+    "login": {
+      "title": "Tekrar hoş geldiniz",
+      "subtitle": "HotelLink hesabınıza giriş yapın",
+      "email": "E-posta adresi",
+      "password": "Şifre",
+      "forgotPassword": "Şifremi unuttum?",
+      "signIn": "Giriş Yap",
+      "noAccount": "Hesabınız yok mu?",
+      "signUp": "Kaydolun",
+      "orContinueWith": "Veya şununla devam edin",
+      "google": "Google ile devam et",
+      "linkedin": "LinkedIn ile devam et"
+    },
+    "register": {
+      "title": "Hesabınızı oluşturun",
+      "subtitle": "HotelLink'teki binlerce otel ve adaya katılın",
+      "selectRole": "Ben bir...",
+      "candidate": "İş Arayan",
+      "candidateDesc": "Türkiye'de otelcilik işi arıyorum",
+      "hotel": "Otel / İşveren",
+      "hotelDesc": "Uluslararası personel işe almak istiyorum",
+      "agency": "İK Ajansı",
+      "agencyDesc": "Aday ve otel yerleştirmelerini yönetiyorum",
+      "name": "Ad Soyad",
+      "email": "E-posta adresi",
+      "password": "Şifre",
+      "confirmPassword": "Şifreyi Onayla",
+      "agreeTerms": "Kullanım Koşulları ve Gizlilik Politikasını kabul ediyorum",
+      "createAccount": "Hesap Oluştur",
+      "haveAccount": "Zaten hesabınız var mı?",
+      "signIn": "Giriş yapın",
+      "verifyEmail": "E-postanızı kontrol edin",
+      "verifyEmailDesc": "E-posta adresinize bir doğrulama bağlantısı gönderdik."
+    },
+    "forgotPassword": {
+      "title": "Şifrenizi sıfırlayın",
+      "subtitle": "Sıfırlama talimatları almak için e-postanızı girin",
+      "email": "E-posta adresi",
+      "sendReset": "Sıfırlama Bağlantısı Gönder",
+      "backToLogin": "Girişe geri dön",
+      "checkEmail": "Gelen kutunuzu kontrol edin",
+      "checkEmailDesc": "E-postanıza şifre sıfırlama talimatları gönderdik."
+    }
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu",
+    "retry": "Tekrar dene",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "view": "Görüntüle",
+    "apply": "Başvur",
+    "share": "Paylaş",
+    "search": "Ara",
+    "filter": "Filtrele",
+    "sort": "Sırala",
+    "noResults": "Sonuç bulunamadı",
+    "seeAll": "Tümünü gör",
+    "learnMore": "Daha fazla",
+    "back": "Geri",
+    "next": "İleri",
+    "previous": "Önceki",
+    "close": "Kapat",
+    "open": "Aç",
+    "yes": "Evet",
+    "no": "Hayır",
+    "required": "Zorunlu",
+    "optional": "İsteğe bağlı",
+    "new": "Yeni",
+    "featured": "Öne Çıkan",
+    "verified": "Doğrulanmış",
+    "pending": "Beklemede",
+    "active": "Aktif",
+    "inactive": "Pasif",
+    "fullTime": "Tam Zamanlı",
+    "partTime": "Yarı Zamanlı",
+    "seasonal": "Sezonluk",
+    "contract": "Sözleşmeli"
+  },
+  "jobs": {
+    "title": "Mükemmel Otelcilik İşini Bul",
+    "subtitle": "Türkiye'nin önde gelen otel ve tatil köylerinde yüzlerce fırsat",
+    "searchPlaceholder": "İş unvanı, departman veya otel...",
+    "locationPlaceholder": "Şehir veya bölge",
+    "filters": {
+      "department": "Departman",
+      "jobType": "İş Türü",
+      "salary": "Maaş Aralığı",
+      "language": "Gerekli Dil",
+      "benefits": "Yan Haklar",
+      "workPermit": "Çalışma İzni Desteği",
+      "accommodation": "Konaklama"
+    },
+    "card": {
+      "applyNow": "Hemen Başvur",
+      "saveJob": "İşi Kaydet",
+      "viewHotel": "Oteli İncele",
+      "postedAgo": "Yayınlandı",
+      "deadline": "Son Tarih",
+      "openings": "açık pozisyon",
+      "salary": "Maaş",
+      "accommodation": "Konaklama dahil",
+      "workPermit": "Çalışma izni desteği"
+    }
+  }
+}
