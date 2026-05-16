@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
@@ -27,6 +27,12 @@ export default function LoginPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const rawCallback = searchParams.get('callbackUrl')
+
+  useEffect(() => {
+    if (searchParams.get('verified') === '1') toast.success('Email verified! You can now sign in.')
+    if (searchParams.get('error') === 'token_expired') toast.error('Verification link expired. Please register again.')
+    if (searchParams.get('error') === 'invalid_token') toast.error('Invalid verification link.')
+  }, [])
   // Only use callback if it's a known valid base path, otherwise go to role-based dashboard
   const validCallbackPrefixes = ['/candidate', '/hotel', '/agency', '/admin', '/dashboard']
   const isValidCallback = rawCallback && validCallbackPrefixes.some(p =>
@@ -57,6 +63,8 @@ export default function LoginPage() {
         const { method } = await check.json()
         if (method === 'google') {
           toast.error('This account was created with Google. Please use the "Continue with Google" button.')
+        } else if (result.error?.includes('verify your email')) {
+          toast.error('Please verify your email first. Check your inbox.')
         } else {
           toast.error('Invalid email or password. Please try again.')
         }

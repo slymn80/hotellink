@@ -89,6 +89,34 @@ function smallNote(text: string) {
 }
 
 // ---------------------------------------------------------------------------
+// 0. Email Verification
+// ---------------------------------------------------------------------------
+
+export async function sendVerificationEmail(params: {
+  email: string
+  name: string | null
+  token: string
+}) {
+  const { email, name, token } = params
+  const verifyUrl = `${APP_URL}/api/auth/verify-email?token=${token}`
+
+  const html = baseTemplate(`
+    ${greeting(name)}
+    ${paragraph('Thank you for registering on HotelLink. Please verify your email address to activate your account.')}
+    ${btn('Verify Email Address', verifyUrl)}
+    ${divider()}
+    ${smallNote('This link expires in 24 hours. If you did not create an account, you can safely ignore this email.')}
+  `)
+
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: 'Verify your HotelLink account',
+    html,
+  })
+}
+
+// ---------------------------------------------------------------------------
 // 1. Welcome / Registration Email
 // ---------------------------------------------------------------------------
 

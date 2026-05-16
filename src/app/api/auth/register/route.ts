@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
+import crypto from 'crypto'
 import { z } from 'zod'
 import { db } from '@/lib/prisma'
-import { sendWelcomeEmail } from '@/lib/email'
+import { sendVerificationEmail } from '@/lib/email'
 
 const registerSchema = z.object({
   name: z.string().min(2).max(100),
@@ -85,12 +86,23 @@ export async function POST(req: NextRequest) {
       return newUser
     })
 
-    await sendWelcomeEmail({ email: user.email, name: user.name, role: user.role })
+    // Create verification token
+    const token = crypto.randomBytes(32).toString('hex')
+    await db.verificationToken.create({
+      data: {
+        identifier: user.email,
+        token,
+        expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
+        type: 'email',
+      },
+    })
+
+    await sendVerificationEmail({ email: user.email, name: user.name, token })
 
     return NextResponse.json(
       {
         status: 'success',
-        message: 'Account created successfully. You can now sign in.',
+        message: 'Account created. Please check your email to verify your account.',
         userId: user.id,
       },
       { status: 201 }

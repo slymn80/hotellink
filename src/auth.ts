@@ -44,6 +44,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           throw new Error('Account suspended. Please contact support.')
         }
 
+        if (!user.emailVerified) {
+          throw new Error('Please verify your email before signing in.')
+        }
+
         const isValid = await bcrypt.compare(
           credentials.password as string,
           user.password
