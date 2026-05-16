@@ -270,7 +270,7 @@ function EducationForm({
 }
 
 export default function CandidateProfilePage() {
-  const { data: session, update: updateSession } = useSession()
+  const { data: session } = useSession()
   const router = useRouter()
   const locale = useLocale()
   const searchParams = useSearchParams()
@@ -386,7 +386,6 @@ export default function CandidateProfilePage() {
       const data = await res.json()
       if (res.ok) {
         setAvatarUrl(data.data.url)
-        await updateSession({ image: data.data.url })
         toast.success('Profile photo updated')
       } else {
         toast.error(data.error ?? 'Upload failed')
@@ -406,7 +405,6 @@ export default function CandidateProfilePage() {
       const res = await fetch('/api/upload/image', { method: 'DELETE' })
       if (res.ok) {
         setAvatarUrl(null)
-        await updateSession({ image: null })
         toast.success('Profile photo removed')
       } else {
         toast.error('Failed to remove photo')
@@ -430,7 +428,6 @@ export default function CandidateProfilePage() {
       const data = await res.json()
       if (res.ok) {
         setAvatarUrl(url)
-        await updateSession({ image: url })
         toast.success('Avatar updated')
       } else {
         toast.error(data.error ?? 'Failed to update avatar')
