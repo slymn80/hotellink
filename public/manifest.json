@@ -4,92 +4,10 @@
   "description": "Find hospitality jobs in Türkiye or hire international staff for your hotel.",
   "start_url": "/en",
   "display": "standalone",
-  "orientation": "portrait-primary",
   "background_color": "#0F1C3F",
   "theme_color": "#6172F3",
   "lang": "en",
   "scope": "/",
-  "icons": [
-    {
-      "src": "/icons/icon-72.png",
-      "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-144.png",
-      "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-384.png",
-      "sizes": "384x384",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Find Jobs",
-      "short_name": "Jobs",
-      "description": "Browse hospitality jobs in Türkiye",
-      "url": "/en/jobs",
-      "icons": [{ "src": "/icons/shortcut-jobs.png", "sizes": "96x96" }]
-    },
-    {
-      "name": "My Dashboard",
-      "short_name": "Dashboard",
-      "description": "Open your dashboard",
-      "url": "/en/dashboard/candidate",
-      "icons": [{ "src": "/icons/shortcut-dashboard.png", "sizes": "96x96" }]
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/screenshots/desktop-home.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "label": "HotelLink Landing Page"
-    },
-    {
-      "src": "/screenshots/mobile-jobs.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "label": "Browse Jobs on Mobile"
-    }
-  ],
   "categories": ["business", "productivity", "travel"],
-  "prefer_related_applications": false,
-  "related_applications": []
+  "prefer_related_applications": false
 }
